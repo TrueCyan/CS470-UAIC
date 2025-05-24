@@ -1,0 +1,6 @@
+uaic/
+__pycache__/
+coco_detections.hdf5
+data_pair.json
+uncertainty_captions.json
+*.bin
