@@ -140,6 +140,14 @@ def train():
             iteration += 1
             
     
+        # 각 에폭이 끝난 후 모델 저장
+        epoch_model_path = os.path.join(model_path, f"pytorch_model_epoch_{epoch+1}.bin")
+        epoch_config_path = os.path.join(model_path, f"config_epoch_{epoch+1}.json")
+        torch.save(model.state_dict(), epoch_model_path)
+        model.config.to_json_file(epoch_config_path)
+        print(f"Model saved at {epoch_model_path}")
+        print(f"Config saved at {epoch_config_path}")
+
     torch.save(model.state_dict(), os.path.join(model_path, 'pytorch_model.bin'))
     model.config.to_json_file(os.path.join(model_path, 'config.json'))
     # tokenizer.save_vocabulary(model_path)
